@@ -10,18 +10,28 @@ import android.widget.Toast;
 
 import com.parse.ParseObject;
 
+import java.util.Random;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    private BolaDeCristal bolaCristal = new BolaDeCristal();//constructor de la clase BolaDeCristal//mejorando el codigo
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         findViewById(R.id.button01).setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {//para dar trabajar bajo la orden de click en e boton
-                ((TextView)findViewById(R.id.textView01)).setText("Hola version ING");//para hacer salida a de un  texto a una casilla
-                Toast.makeText(MainActivity.this,"Hola lokos", Toast.LENGTH_LONG).show();//esto para hacer salida en toast
+
+                String respuesta = bolaCristal.ObtenerRespuestas();//mejorando el codigo
+
+                ((TextView) findViewById(R.id.textView01)).setText(respuesta);//para hacer salida a de un  texto a una casilla
+                Toast.makeText(MainActivity.this,respuesta, Toast.LENGTH_LONG).show();//esto para hacer salida en toast
             }
         }));
 
