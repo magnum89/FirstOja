@@ -8,25 +8,39 @@
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:id="@+id/textView"
+        android:layout_marginBottom="47dp"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textSize="34sp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Presiona"
+        android:text="Toca"
         android:id="@+id/button01"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:textColor="#ffffffff"
-        android:background="#ff0004ff" />
+        android:background="#ff0004ff"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textSize="32sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView01"
-        android:layout_below="@+id/button01"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:textColor="#ffffffff" />
+        android:textColor="#ffffffff"
+        android:textSize="30sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/crystall_ball"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

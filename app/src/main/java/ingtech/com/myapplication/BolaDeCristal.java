@@ -13,7 +13,9 @@ public class BolaDeCristal {
                 "Hola",
                 "Chao",
                 "Suerte",
-                "Sayonara"
+                "Sayonara",
+                "Suerte Papa",
+                "Te jodistes"
         };
         Random genAlea = new Random();
         int numAlea = genAlea.nextInt(respuestas.length);//selecciona un numero alea de 0- 3 el 4 no entra /con.length me ahorro eso
