@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }));
 
-        ParseObject object;
+        //ParseObject object;
     }
 
 
