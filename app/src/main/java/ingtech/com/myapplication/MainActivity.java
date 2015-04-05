@@ -1,10 +1,12 @@
 package ingtech.com.myapplication;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,12 +34,30 @@ public class MainActivity extends ActionBarActivity {
 
                 ((TextView) findViewById(R.id.textView01)).setText(respuesta);//para hacer salida a de un  texto a una casilla
                 Toast.makeText(MainActivity.this,respuesta, Toast.LENGTH_LONG).show();//esto para hacer salida en toast
+                //agregamos la animacion al click
+                animarBola();
             }
         }));
 
         //ParseObject object;
     }
 
+
+    //nuevo metodo para realizar la animacion
+    private void animarBola(){
+
+        ImageView bolaImagen = (ImageView)findViewById(R.id.imageView);
+        //agregar el recurso al objeto imageView
+        bolaImagen.setImageResource(R.drawable.animacion);
+        //para declarar la animacion debemos decarar animationDrawable
+        AnimationDrawable animacionBola = (AnimationDrawable)bolaImagen.getDrawable();
+
+        if (animacionBola.isRunning()){
+            animacionBola.stop();
+        }
+        //darle la orden de arrancar
+        animacionBola.start();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
