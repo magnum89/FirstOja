@@ -10,11 +10,11 @@ public class BolaDeCristal {
     public String ObtenerRespuestas(){
 
         String[] respuestas = {//agregamos este arreglo
-                "Hola",
-                "Chao",
-                "Suerte",
-                "Sayonara",
-                "Suerte Papa",
+                "Hoy tendras suerte",
+                "Haz el baloto",
+                "Haz un chance",
+                "Regalame Plata",
+                "No te bañes",
                 "Te jodistes"
         };
         Random genAlea = new Random();

@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.parse.ParseObject;
-
-import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private BolaDeCristal bolaCristal = new BolaDeCristal();//constructor de la clase BolaDeCristal//mejorando el codigo
-
+    private TextView mEtiquetaRespuesta;
+    private Button mBotonRespuesta;
+    private ImageView mBoladCristal;
 
 
     @Override
@@ -26,16 +26,21 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button01).setOnClickListener((new View.OnClickListener() {
+        mEtiquetaRespuesta = (TextView) findViewById(R.id.textView01);//mejoramos la etiqueta
+        mBotonRespuesta = (Button)findViewById(R.id.button01);
+
+        mBotonRespuesta.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {//para dar trabajar bajo la orden de click en e boton
 
                 String respuesta = bolaCristal.ObtenerRespuestas();//mejorando el codigo
 
-                ((TextView) findViewById(R.id.textView01)).setText(respuesta);//para hacer salida a de un  texto a una casilla
-                Toast.makeText(MainActivity.this,respuesta, Toast.LENGTH_LONG).show();//esto para hacer salida en toast
+                mEtiquetaRespuesta.setText(respuesta);//para hacer salida a de un  texto a una casilla
+                Toast.makeText(MainActivity.this, respuesta, Toast.LENGTH_LONG).show();//esto para hacer salida en toast
                 //agregamos la animacion al click
                 animarBola();
+                //llamamos el metodo de animacion de texto
+                animarRespuesta();
             }
         }));
 
@@ -46,17 +51,29 @@ public class MainActivity extends ActionBarActivity {
     //nuevo metodo para realizar la animacion
     private void animarBola(){
 
-        ImageView bolaImagen = (ImageView)findViewById(R.id.imageView);
+        mBoladCristal = (ImageView)findViewById(R.id.imageView);
         //agregar el recurso al objeto imageView
-        bolaImagen.setImageResource(R.drawable.animacion);
+        mBoladCristal.setImageResource(R.drawable.animacion);
         //para declarar la animacion debemos decarar animationDrawable
-        AnimationDrawable animacionBola = (AnimationDrawable)bolaImagen.getDrawable();
+        AnimationDrawable animacionBola = (AnimationDrawable) mBoladCristal.getDrawable();
 
         if (animacionBola.isRunning()){
             animacionBola.stop();
         }
         //darle la orden de arrancar
         animacionBola.start();
+    }
+
+    //metodo para animacion de texto
+    private void animarRespuesta(){
+        //la clase para la animacion se llama alphaanimation
+        AlphaAnimation animaEntrada = new AlphaAnimation(0,1);//pide dos valores uno al inicio y otro al final de la animacion(0, 1)
+        //(0 -> opacidad 0 invisible  1-> opacidad 1 Visible
+        animaEntrada.setDuration(1500);//ms
+        //mantenga el valor de alpha en 1 al finalizar la animacion
+        animaEntrada.setFillAfter(true);
+
+        mEtiquetaRespuesta.setAnimation(animaEntrada);
     }
 
     @Override
