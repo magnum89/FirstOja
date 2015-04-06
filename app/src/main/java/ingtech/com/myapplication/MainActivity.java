@@ -1,6 +1,7 @@
 package ingtech.com.myapplication;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,6 +42,8 @@ public class MainActivity extends ActionBarActivity {
                 animarBola();
                 //llamamos el metodo de animacion de texto
                 animarRespuesta();
+                //llamar al metodo reproducir sonido
+                reproducirSonido();
             }
         }));
 
@@ -66,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
 
     //metodo para animacion de texto
     private void animarRespuesta(){
-        //la clase para la animacion se llama alphaanimation
+        //la clase para la animacion se llama AlphaAnimation
         AlphaAnimation animaEntrada = new AlphaAnimation(0,1);//pide dos valores uno al inicio y otro al final de la animacion(0, 1)
         //(0 -> opacidad 0 invisible  1-> opacidad 1 Visible
         animaEntrada.setDuration(1500);//ms
@@ -74,6 +77,21 @@ public class MainActivity extends ActionBarActivity {
         animaEntrada.setFillAfter(true);
 
         mEtiquetaRespuesta.setAnimation(animaEntrada);
+    }
+
+    //metodo para sonido
+    private void reproducirSonido(){
+        //variable tipo MediaPlayer
+        MediaPlayer reproductor = MediaPlayer.create(this, R.raw.sonido);//create necesita un objeto de contexto, un ID de recurso
+        reproductor.start();//reproducir
+        //liberar los recursos de memoria con setOnCompletionListener q se ejecuta cuando el reproductor termina
+        reproductor.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                //llamamos al metodo release
+                mp.release();
+            }
+        });
     }
 
     @Override

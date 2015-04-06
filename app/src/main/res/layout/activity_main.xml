@@ -31,11 +31,11 @@
         android:layout_height="wrap_content"
         android:textColor="#ffffffff"
         android:id="@+id/textView"
-        android:layout_marginBottom="72dp"
         android:textSize="32sp"
         android:textIsSelectable="true"
-        android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp" />
 
     <LinearLayout
         android:layout_width="fill_parent"

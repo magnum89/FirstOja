@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Bola de Lokos</string>
 
-    <string name="hello_world">Agitame!</string>
+    <string name="hello_world">Preguntame!</string>
     <string name="action_settings">Settings</string>
 </resources>
